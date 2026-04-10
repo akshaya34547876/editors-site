@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EdiToRs — Professional Video Production & Editing</title>
+    <meta name="description" content="EdiToRs is a creative video production company offering editing, videography, music videos, short films, and creator management services." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* ════════════════════════ CUSTOM CSS CORE ════════════════════════ */
+        :root { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #080c14; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+        .perspective-container { perspective: 1200px; }
+        .card-3d { 
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            transform-style: preserve-3d; 
+        }
+        .card-3d:hover { transform: rotateY(-10deg) rotateX(5deg) scale(1.02); }
+        
+        .glow-btn { 
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); 
+            transition: all 0.3s ease;
+        }
+        .glow-btn:hover { 
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.6); 
+            transform: translateY(-3px);
+        }
+        
+        .glow-box { box-shadow: 0 0 50px rgba(59, 130, 246, 0.15); }
+        
+        .fade-up { animation: fadeUp 1s ease-out forwards; }
+        @keyframes fadeUp { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+        .float-anim { animation: float 5s ease-in-out infinite; }
+        .float-anim-delayed { animation: float 6s ease-in-out infinite; animation-delay: 1s; }
+
+        .service-card { 
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background: rgba(13, 19, 34, 0.5);
+        }
+        .service-card:hover { 
+            background: rgba(19, 27, 46, 0.8);
+            border-color: rgba(59, 130, 246, 0.4); 
+            transform: translateY(-12px); 
+        }
+
+        .pricing-card {
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: { 900: '#060a12', 800: '#0d1322', 700: '#131b2e', 600: '#1e293b' },
+                        blue: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' },
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-dark-900 text-white font-body antialiased">
+
+    <nav class="fixed top-0 left-0 right-0 z-[100] backdrop-blur-2xl bg-dark-900/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="p-2.5 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 group-hover:border-blue-500/60 transition-all">
+                    <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </div>
+                <span class="text-2xl font-heading font-extrabold tracking-tighter bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">EdiToRs</span>
+            </a>
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#services" class="text-sm font-semibold text-gray-400 hover:text-blue-400 transition-all">Services</a>
+                <a href="#about" class="text-sm font-semibold text-gray-400 hover:text-blue-400 transition-all">Studio</a>
+                <a href="#pricing" class="text-sm font-semibold text-gray-400 hover:text-blue-400 transition-all">Pricing</a>
+                <a href="#contact" class="text-sm font-semibold text-gray-400 hover:text-blue-400 transition-all">Contact</a>
+                <a href="#contact" class="px-7 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm hover:bg-blue-500 transition-all glow-btn">Launch Project</a>
+            </div>
+            <button class="lg:hidden text-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#1e293b_0%,transparent_50%)]"></div>
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px]"></div>
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
+
+        <div class="max-w-7xl mx-auto px-8 relative z-20 w-full">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-10 fade-up">
+                    <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-xs font-bold tracking-widest text-blue-400 uppercase">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span></span>
+                        Next-Gen Content Studio
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-heading font-black leading-[0.9] tracking-tight">
+                        CRAFTING<br/><span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent italic">LEGENDS.</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 max-w-lg leading-relaxed font-medium">
+                        The <b>EdiToRs</b> collective turns raw footage into cinematic high-retention gold. We don't just edit; we dominate the algorithm.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <a href="#contact" class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-blue-600 text-white font-black text-xl hover:bg-blue-500 transition-all glow-btn">
+                            Get Started
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center px-10 py-5 rounded-2xl border border-white/10 bg-white/5 text-white font-bold text-xl hover:bg-white/10 transition-all">Explore Work</a>
+                    </div>
+                    <div class="flex gap-12 pt-10">
+                        <div class="group"><div class="text-4xl font-black text-white group-hover:text-blue-400 transition-colors">50M+</div><div class="text-xs font-bold text-gray-500 uppercase tracking-widest">Views Generated</div></div>
+                        <div class="group"><div class="text-4xl font-black text-white group-hover:text-cyan-400 transition-colors">200+</div><div class="text-xs font-bold text-gray-500 uppercase tracking-widest">Global Clients</div></div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block perspective-container">
+                    <div class="card-3d relative">
+                        <div class="rounded-[40px] overflow-hidden border border-white/10 glow-box relative">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200" alt="Editing" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-60"></div>
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 p-8 rounded-3xl backdrop-blur-3xl bg-dark-800/40 border border-blue-500/30 float-anim">
+                            <div class="text-2xl font-black text-blue-400">8K</div>
+                            <div class="text-xs font-bold text-gray-400 uppercase">RAW PIPELINE</div>
+                        </div>
+                        <div class="absolute -top-10 -right-10 p-8 rounded-3xl backdrop-blur-3xl bg-dark-800/40 border border-cyan-500/30 float-anim-delayed">
+                            <div class="text-2xl font-black text-cyan-400">VFX</div>
+                            <div class="text-xs font-bold text-gray-400 uppercase">STUDIO GRADE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="py-32 relative bg-dark-800/20">
+        <div class="max-w-7xl mx-auto px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+                <div class="max-w-2xl space-y-4">
+                    <h2 class="text-blue-400 font-bold tracking-[0.3em] uppercase text-sm">Capabilities</h2>
+                    <h3 class="text-5xl md:text-7xl font-heading font-black">OUR <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">ARSENAL</span></h3>
+                </div>
+                <p class="text-gray-400 max-w-xs font-medium">Complete creative destruction and rebirth of your brand visuals.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 text-blue-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">YouTube Mastery</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Retention-hacking edits that keep viewers glued. Advanced pacing, motion titles, and custom B-roll integration.</p>
+                </div>
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 text-cyan-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Cinematography</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Raw 4K/8K filming for brands that refuse to look amateur. High-end lighting and drone operations in Mumbai.</p>
+                </div>
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 text-blue-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">VFX & Compositing</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Reality-bending effects, green screen removal, 3D object tracking, and high-impact digital environments.</p>
+                </div>
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 text-blue-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Music Videos</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Aggressive, rhythmic editing for the music industry. We bring the energy from the booth to the screen.</p>
+                </div>
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 text-cyan-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Brand Identity</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Complete visual guidelines, logo motion stings, and social media aesthetic control for elite creators.</p>
+                </div>
+                <div class="service-card p-10 rounded-[32px] border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 text-blue-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Creator Management</h4>
+                    <p class="text-gray-500 leading-relaxed font-medium">Full pipeline management. We handle the uploads, the thumbnails, and the strategy while you focus on the art.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-8 relative z-10">
+            <div class="text-center mb-24 space-y-4">
+                <h3 class="text-5xl font-heading font-black">INVESTMENT <span class="text-blue-500">PLANS</span></h3>
+                <p class="text-gray-400 font-medium">Choose your level of world-dominance.</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="pricing-card p-12 rounded-[40px] bg-dark-800/40 border border-white/10 flex flex-col h-full">
+                    <div class="mb-8">
+                        <h5 class="text-xl font-bold mb-2">Creator Lite</h5>
+                        <div class="text-4xl font-black text-white">$499<span class="text-sm text-gray-500">/mo</span></div>
+                    </div>
+                    <ul class="space-y-4 text-gray-400 font-medium mb-12 flex-grow text-sm">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 4 YouTube Edits / mo</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Standard Color Grade</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Basic Motion Graphics</li>
+                    </ul>
+                    <a href="#" class="w-full py-4 text-center rounded-2xl border border-white/10 hover:bg-white/5 transition-all font-bold">Get Lite</a>
+                </div>
+                <div class="pricing-card p-12 rounded-[40px] bg-blue-600 border border-blue-400 shadow-[0_0_60px_rgba(37,99,235,0.3)] flex flex-col h-full scale-105">
+                    <div class="absolute top-6 right-8 px-4 py-1 bg-white text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest">Most Popular</div>
+                    <div class="mb-8">
+                        <h5 class="text-xl font-bold mb-2 text-white">Algorithm Pro</h5>
+                        <div class="text-4xl font-black text-white">$1,299<span class="text-sm text-blue-200">/mo</span></div>
+                    </div>
+                    <ul class="space-y-4 text-blue-100 font-medium mb-12 flex-grow text-sm">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 8 Premium Edits / mo</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Advanced Retention Editing</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Dedicated Content Strategist</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 4K HDR Finishing</li>
+                    </ul>
+                    <a href="#" class="w-full py-4 text-center rounded-2xl bg-white text-blue-600 transition-all font-black shadow-xl">Start Pro</a>
+                </div>
+                <div class="pricing-card p-12 rounded-[40px] bg-dark-800/40 border border-white/10 flex flex-col h-full">
+                    <div class="mb-8">
+                        <h5 class="text-xl font-bold mb-2">Agency Elite</h5>
+                        <div class="text-4xl font-black text-white">Custom</div>
+                    </div>
+                    <ul class="space-y-4 text-gray-400 font-medium mb-12 flex-grow text-sm">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Unlimited High-End Output</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Full Production Crew</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> TV/Cinema Commercial Level</li>
+                    </ul>
+                    <a href="#" class="w-full py-4 text-center rounded-2xl border border-white/10 hover:bg-white/5 transition-all font-bold">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 relative bg-dark-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-24 items-center">
+            <div class="space-y-8">
+                <h3 class="text-7xl font-heading font-black">LET'S <br/>TALK <span class="text-blue-500">FIRE.</span></h3>
+                <p class="text-xl text-gray-500 font-medium">The <b>EdiToRs</b> team is ready. No more waiting. No more average videos.</p>
+                <div class="p-10 rounded-[32px] bg-blue-600/5 border border-blue-500/20 space-y-6">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                        <span class="text-xl font-bold">hello@editors.studio</span>
+                    </div>
+                </div>
+            </div>
+            <form class="space-y-6 p-12 rounded-[40px] border border-white/10 bg-dark-800/30 backdrop-blur-3xl">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Full Name" class="w-full bg-dark-900 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all font-medium" />
+                    <input type="email" placeholder="Email Address" class="w-full bg-dark-900 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all font-medium" />
+                </div>
+                <select class="w-full bg-dark-900 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all font-medium text-gray-400">
+                    <option>Select Project Type</option>
+                    <option>YouTube Channel Growth</option>
+                    <option>Music Video Production</option>
+                    <option>Brand Commercial</option>
+                </select>
+                <textarea rows="5" placeholder="Project details (Budget, Deadline, Style...)" class="w-full bg-dark-900 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all font-medium"></textarea>
+                <button class="w-full py-5 rounded-2xl bg-blue-600 text-white font-black text-xl hover:bg-blue-500 transition-all glow-btn shadow-2xl">INITIATE COLLABORATION</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-8 space-y-10">
+            <span class="text-3xl font-heading font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">EdiToRs</span>
+            <div class="flex justify-center gap-12 text-sm font-bold text-gray-500 uppercase tracking-[0.2em]">
+                <a href="#" class="hover:text-blue-400 transition-all">Instagram</a>
+                <a href="#" class="hover:text-blue-400 transition-all">Discord</a>
+                <a href="#" class="hover:text-blue-400 transition-all">Behance</a>
+            </div>
+            <p class="text-gray-700 text-xs font-bold tracking-widest">© 2026 EDITORS CREATIVE COLLECTIVE. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
